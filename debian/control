@@ -1,0 +1,20 @@
+Source: slimerjs
+Section: web
+Priority: extra
+Maintainer: Jerry Lundström <lundstrom.jerry@gmail.com>
+Build-Depends:
+ debhelper (>= 8.0.0)
+Standards-Version: 3.9.4
+
+Package: slimerjs
+Architecture: all
+Depends:
+ ${misc:Depends}
+Description: SlimerJS is a scriptable browser
+ SlimerJS is a scriptable browser. It allows you to manipulate a web page
+ with an external Javascript script: opening a webpage, clicking on links, modifying the content...
+ It is useful to do functional tests, page automation, network monitoring, screen capture etc.
+ .
+ It is a tool like [PhantomJs](http://phantomjs.org/), except that
+ it runs Gecko instead of Webkit, and it is not (yet) natively headless.
+ However, it can be headless with the use of xvfb under Linux or MacOS.

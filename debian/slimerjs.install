@@ -1,0 +1,7 @@
+src/slimerjs usr/lib/slimerjs/
+src/application.ini usr/lib/slimerjs/
+src/chrome.manifest usr/lib/slimerjs/
+src/chrome/ usr/lib/slimerjs/
+src/components/ usr/lib/slimerjs/
+src/defaults/ usr/lib/slimerjs/
+src/modules/ usr/lib/slimerjs/
