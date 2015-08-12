@@ -1,3 +1,13 @@
+slimerjs (0.10.0pre-2~unstable-1) unstable; urgency=low
+
+  * New release 0.10.0pre-2
+    - Added quilt patch:
+      - Update supported Gecko version to 40.*.
+      - Fix 'Sandbox must subsume sandboxPrototype' error by supplying the
+        content window as prototype if the Gecko version is 40 or above.
+
+ -- Jerry Lundström <lundstrom.jerry@gmail.com>  Wed, 12 Aug 2015 14:56:36 +0200
+
 slimerjs (0.10.0pre-1~unstable-1) unstable; urgency=low
 
   * Initial upstream release.

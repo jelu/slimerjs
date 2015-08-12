@@ -1,0 +1,35 @@
+--- a/src/application.ini
++++ b/src/application.ini
+@@ -8,4 +8,4 @@
+ 
+ [Gecko]
+ MinVersion=17.0.0
+-MaxVersion=39.*
++MaxVersion=40.*
+--- a/src/modules/slLauncher.jsm
++++ b/src/modules/slLauncher.jsm
+@@ -22,6 +22,10 @@
+                      .getService(Ci.nsIFileProtocolHandler)
+ const systemPrincipal = Cc['@mozilla.org/systemprincipal;1']
+                         .createInstance(Ci.nsIPrincipal)
++const appInfo = Cc["@mozilla.org/xre/app-info;1"]
++                .getService(Ci.nsIXULAppInfo);
++const versionComparator = Cc["@mozilla.org/xpcom/version-comparator;1"]
++                          .getService(Ci.nsIVersionComparator);
+ 
+ /**
+  * this function retrieves various informations
+@@ -92,9 +96,10 @@
+             // prepare the sandbox to execute coffee script injected with injectJs
+             coffeeScriptSandbox = Cu.Sandbox(contentWindow,
+                                 {
+-                                    'sandboxName': 'coffeescript',
+-                                    'sandboxPrototype': {},
+-                                    'wantXrays': true
++                                    sandboxName: 'coffeescript',
++                                    // XULrunner 40.0 and above handles sandboxPrototype different then before
++                                    sandboxPrototype: versionComparator.compare(appInfo.platformVersion, '40') < 0 ? {} : contentWindow,
++                                    wantXrays: true
+                                 });
+             let src = slUtils.readChromeFile("resource://slimerjs/coffee-script/extras/coffee-script.js");
+             Cu.evalInSandbox('var CoffeeScript;', coffeeScriptSandbox, 'ECMAv5', 'slLauncher::launchMainScript', 1);
